@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Çağatay Çayır</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe); /* Arka plan gradyanı */
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        /* Navbar */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-tabs {
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .nav-tabs .nav-link {
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #132e39;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-tabs .nav-link:hover {
+            color: #f8d210;
+        }
+
+        /* İçerik */
+        .content {
+            margin-top: 50px; /* Navbar'ın altındaki genel içerik boşluğu */
+            text-align: center;
+            padding: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Profil Fotoğrafı */
+        .profile-img {
+            display: block;
+            margin: 60px auto 50px auto; /* Fotoğrafı aşağı almak için margin-top artırıldı */
+            border-radius: 50%;
+            border: 5px solid white;
+            width: 200px;
+            height: 200px;
+           
+        }
+
+        /* Metin Alanı */
+        .bio {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          
+        }
+
+        /* Buton */
+        .button-containerr {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-custom {
+            background: #132e39;
+            color: white;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-custom:hover {
+            background: #f8d210;
+            color: black;
+        }
+        .footer-s{
+            background-color: #132e39;
+        }
+        .footer-s {
+    background-color: #132e39;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* İkonlar arası boşluk */
+}
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Yuvarlak ikonlar için */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); /* Hover'da büyütme efekti */
+    opacity: 0.8;
+}
+/* Hero Bölümü */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+    flex-direction: column;
+}
+
+.hero-text h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-text p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-custom {
+    background: #132e39;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.btn-custom:hover {
+    background: #f8d210;
+    color: black;
+}
+
+
+
+.skills-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.skills-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.skill-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.skill-card {
+    width: 180px;
+    height: 220px;
+    background: linear-gradient(to bottom, #132e39, #203a43);
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    perspective: 1000px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.4s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.skill-front, .skill-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: transform 0.6s;
+}
+
+.skill-front img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.skill-card .skill-back {
+    background: #f8d210;
+    color: black;
+    transform: rotateY(180deg);
+    border-radius: 10px;
+}
+
+.skill-card:hover .skill-front {
+    transform: rotateY(180deg);
+}
+
+.skill-card:hover .skill-back {
+    transform: rotateY(360deg);
+}
+.player{
+    background-color: #0f2027;
+    border-radius: 10px;
+}
+
+.btn-whatsapp {
+        display: inline-block;
+        background-color: #000000;
+        color: white;
+        padding: 12px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+        background-color: #0a2816;
+    }
+    .copyright{
+        margin-top: 5px;
+    }
+    
+    </style>
+</head>
+<body>
+    <!-- Hero Bölümü -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Merhaba, ben Çağatay Çayır</h1>
+        <p>Veri Bilimi ve Analitiği öğrencisiyim. WEB siteme hoşgeldin !!</p>
+        <div class="button-container">
+            <a href="#" class="btn-custom" onclick="showContent()">DEVAM ET</a>
+        </div>
+    </div>
+</section>
+
+    <!-- Navbar -->
+    <div class="nav-container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sertifikalar.html">Sertifikalar</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Profil Fotoğrafı -->
+    <img class="profile-img" src="ben.jpg" alt="Çağatay Çayır'ın Fotoğrafı">
+
+    <!-- İçerik Alanı -->
+    <div class="content">
+        <div class="bio">
+            <h2>Çağatay Çayır</h2>
+            <p>
+                Manisa Celal Bayar Üniversitesi **Veri Bilimi ve Analitiği** bölümünde eğitimine devam eden **tutkulu bir yazılım geliştiricisi ve veri analisti** adayıdır.
+                Bolaman Anadolu Lisesi'nden **okul birincisi olarak mezun olmuş** ve akademik başarısını üniversite hayatında da sürdürmektedir.
+            </p>
+
+            <h3>Teknik Beceriler ve Deneyimler</h3>
+            <p>
+                Çağatay, **C++, Python, HTML, CSS, JavaScript** gibi dillerde deneyimlidir ve **Frontend - Backend geliştirme** konusunda aktif olarak çalışmaktadır. 
+                **Bootstrap, SGL** gibi araçları kullanarak projelerini daha işlevsel hale getirmektedir.  
+                **ENM Dijital’de frontend developer stajyeri olarak** görev almakta, web geliştirme süreçlerini deneyimlemektedir.  
+            </p>
+
+            <h3>Projeler ve Akademik Çalışmalar</h3>
+            <p>
+                **TÜBİTAK tarafından değerlendirme sürecinde olan bir projede proje koordinatörü** olarak görev almaktadır. 
+                Ayrıca, **medikal veri analitiği ve yapay zeka** alanlarına büyük ilgi duymakta olup, 
+                sağlık sektörüne **veri analizi ve makine öğrenmesi tabanlı çözümler** geliştirmeyi hedeflemektedir.
+            </p>
+
+            <h3>Hedefler ve Vizyon</h3>
+            <p>
+                Çağatay, **insanlığa ve topluma faydalı projeler üretmeyi hedeflemektedir.**  
+                Yapay zeka destekli veri analizi, hasta verileri üzerinde modelleme ve tahminleme gibi konulara özel ilgi duymakta ve kendini sürekli geliştirmektedir.
+            </p>
+
+            <h3>İlgi Alanları</h3>
+            <p>
+                Çağatay, boş zamanlarında **kitap okumak, yazılım öğrenmek, dil becerilerini geliştirmek, oyun oynamak, film ve dizi izlemek** gibi birçok aktiviteyle ilgilenmektedir. 
+                **Müziğe büyük bir ilgisi vardır**, sadece dinlemekle kalmayıp **müzik söylemek** konusunda da kendini geliştirmektedir. 🎵
+            </p>
+        </div>
+
+        
+    </div>
+    <div class="skills-section">
+        <h2 class="player">Becerilerim</h2>
+        <div class="skill-container">
+            <div class="skill-card">
+                <div class="skill-front">
+                    
+                    <h3>Python</h3>
+                </div>
+                <div class="skill-back">
+                    <p>Veri Analizi & Makine Öğrenmesi "hala öğreniliyor"</p>
+                </div>
+            </div>
+    
+            <div class="skill-card">
+                <div class="skill-front">
+                    
+                    <h3>C++</h3>
+                </div>
+                <div class="skill-back">
+                    <p>Algoritmalar & Sistem Programlama </p>
+                </div>
+            </div>
+    
+            <div class="skill-card">
+                <div class="skill-front">
+                    
+                    <h3>HTML</h3>
+                </div>
+                <div class="skill-back">
+                    <p>Modern ve Duyarlı Web Sayfaları</p>
+                </div>
+            </div>
+    
+            <div class="skill-card">
+                <div class="skill-front">
+                   
+                    <h3>CSS</h3>
+                </div>
+                <div class="skill-back">
+                    <p>Şık ve Duyarlı Tasarımlar</p>
+                </div>
+            </div>
+    
+            <div class="skill-card">
+                <div class="skill-front">
+                    
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill-back">
+                    <p>İnteraktif Web Geliştirme "hala öğreniliyor"</p>
+                </div>
+            </div>
+    
+            <div class="skill-card">
+                <div class="skill-front">
+                    <h3>Bootstrap</h3>
+                </div>
+                <div class="skill-back">
+                    <p>Hızlı ve Mobil Uyumlu UI</p>
+                </div>
+            </div>
+    
+            <div class="skill-card">
+                <div class="skill-front">
+
+                    <h3>Yabancı Dil</h3>
+                </div>
+                <div class="skill-back">
+                    <p>B2-C1 Seviyesinde İngilizce</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-containerr">
+        <button class="btn-custom" onclick="showWebsite()">Aile Danışmanlığı Web Sitesine Git</button>
+        <div id="iframeContainer" style="display:none; margin-top: 20px; text-align: center;">
+            <iframe id="websiteFrame" src="" width="100%" height="600px" style="border:none;"></iframe>
+            
+            <!-- Ana Menüye Geri Dön Butonu -->
+            <button class="btn-custom" onclick="scrollToTop()" style="margin-top: 20px;">Ana Menüye Dön</button>
+        </div>
+    </div>
+    
+    <script>
+        function showWebsite() {
+            var iframeContainer = document.getElementById('iframeContainer');
+            var iframe = document.getElementById('websiteFrame');
+    
+            iframe.src = "https://caca1403.github.io/ailedan-man-emine/";
+            iframeContainer.style.display = "block"; // Iframe'i görünür yap
+    
+            // Sayfayı iframe bölümüne kaydır
+            iframeContainer.scrollIntoView({ behavior: "smooth" });
+        }
+    
+        function scrollToTop() {
+            // Iframe'i gizle
+            document.getElementById('iframeContainer').style.display = "none";
+    
+            // Ana Menüye Kaydır
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    </script>
+  
+    
+    
+    </div>
+<footer class="footer-s" >
+    <footer class="footer-s">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/cayirrcagatayy?igsh=ejcwMmhhZzd2aGpp" target="_blank">
+                <img src="instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/share/15u1TSAJEf/?mibextid=qi2Omg" target="_blank">
+                <img src="facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/%C3%A7agatay-%C3%A7ay%C4%B1r-80a46729a/" target="_blank">
+                <img src="linkedin.jpeg" alt="LinkedIn">
+            </a>
+        </div>
+       
+        <p class="copyright" aria-readonly="true">© 2024 Tüm Haklar Çağatay Çayır'a Aittir.</p>
+        <div class="buttons">
+            <a href="https://api.whatsapp.com/send?phone=905426101403&text=Merhaba%20Çağatay,%20sizinle%20iletişime%20geçmek%20istiyorum!"
+               class="btn-whatsapp" target="_blank">
+              İletişime Geç
+            </a>
+        </div> 
+</footer>
+<script>
+    // Sayfa yüklendiğinde en üste kaydır, navbarı gizle ve kaydırmayı engelle
+    window.onload = function () {
+        window.scrollTo(0, 0); // Sayfa yüklendiğinde en üste gider
+        document.body.style.overflow = 'hidden'; // Scroll'u engeller
+        document.querySelector('.nav-container').style.display = 'none'; // Navbarı gizle
+    };
+
+    function showContent() {
+        document.querySelector('.hero').style.display = 'none'; // Hero'yu gizle
+        document.querySelector('.nav-container').style.display = 'flex'; // Navbar'ı göster
+        document.querySelector('.content').style.display = 'block'; // İçeriği göster
+        document.querySelector('.content').style.opacity = '1'; // İçeriği görünür yap
+        document.querySelector('.footer-s').style.display = 'block'; // Footer'ı göster
+        document.body.style.overflow = 'auto'; // Kaydırmayı aç
+    }
+</script>
+
+</body>
+</html>
