@@ -5,23 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Çağatay Çayır</title>
     <style>
+        /* Genel stil güncellemeleri */
         body {
-            background: linear-gradient(to right, #4facfe, #00f2fe);
-            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            font-family: 'Poppins', sans-serif;
             color: white;
             margin: 0;
             padding: 0;
         }
 
-        /* Hero Bölümü */
+        /* Hero bölümü güncellemeleri */
         .hero {
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80');
+            background-size: cover;
+            background-position: center;
             color: white;
             text-align: center;
             flex-direction: column;
@@ -42,6 +47,8 @@
             padding: 30px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .hero-text h1 {
@@ -78,12 +85,13 @@
             }
         }
 
-        /* Navbar */
+        /* Navbar güncellemeleri */
         .nav-container {
             display: none;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.8);
+            background: rgba(19, 46, 57, 0.95);
+            backdrop-filter: blur(10px);
             padding: 15px 0;
             position: fixed;
             width: 100%;
@@ -102,6 +110,8 @@
             font-size: 18px;
             transition: 0.3s;
             padding: 10px 20px;
+            position: relative;
+            overflow: hidden;
         }
 
         .nav-tabs .nav-link.active {
@@ -114,6 +124,21 @@
         .nav-tabs .nav-link:hover {
             color: #f8d210;
             transform: translateY(-2px);
+        }
+
+        .nav-tabs .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f8d210;
+            transition: width 0.3s ease;
+        }
+
+        .nav-tabs .nav-link:hover::after {
+            width: 100%;
         }
 
         /* İçerik */
@@ -131,15 +156,15 @@
             margin-right: auto;
         }
 
-        /* Profil Fotoğrafı */
+        /* Profil resmi güncellemeleri */
         .profile-img {
             display: block;
             margin: 30px auto;
             border-radius: 50%;
-            border: 3px solid white;
-            width: 200px;
-            height: 200px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            border: 4px solid #f8d210;
+            width: 250px;
+            height: 250px;
+            box-shadow: 0 0 25px rgba(248, 210, 16, 0.3);
             transition: transform 0.3s ease;
         }
 
@@ -147,14 +172,22 @@
             transform: scale(1.05);
         }
 
-        /* Metin Alanı */
+        /* Bio bölümü güncellemeleri */
         .bio {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(19, 46, 57, 0.85);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             margin-bottom: 40px;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bio:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         .bio h2 {
@@ -163,16 +196,18 @@
         }
 
         .bio h3 {
-            color: #2c353c;
+            color: #8e9193;
             margin-top: 25px;
         }
 
-        /* Beceriler Bölümü */
+        /* Beceriler bölümü güncellemeleri */
         .skills-section {
             padding: 50px 20px;
-            background: rgba(19, 46, 57, 0.9);
+            background: rgba(19, 46, 57, 0.95);
             margin-top: 40px;
             border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .player {
@@ -206,11 +241,14 @@
             cursor: pointer;
             border-radius: 10px;
             transition: transform 0.4s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .skill-card:hover {
             transform: scale(1.05);
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            animation: floatAnimation 2s infinite ease-in-out;
         }
 
         .skill-front, .skill-back {
@@ -245,10 +283,10 @@
             transform: rotateY(360deg);
         }
 
-        /* Butonlar */
+        /* Buton güncellemeleri */
         .btn-custom {
-            background: #132e39;
-            color: white;
+            background: linear-gradient(45deg, #f8d210, #f4a261);
+            color: #132e39;
             padding: 15px 30px;
             font-size: 18px;
             border-radius: 8px;
@@ -258,21 +296,22 @@
             font-weight: bold;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(248, 210, 16, 0.3);
         }
 
         .btn-custom:hover {
-            background: #f8d210;
-            color: black;
-            transform: translateY(-3px);
+            background: linear-gradient(45deg, #f4a261, #f8d210);
+            transform: translateY(-3px) scale(1.02);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* Footer */
+        /* Footer güncellemeleri */
         .footer-s {
-            background-color: #132e39;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
             padding: 30px 0;
             text-align: center;
             margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-icons {
@@ -288,6 +327,8 @@
             border-radius: 50%;
             border: 2px solid white;
             transition: transform 0.3s ease, opacity 0.3s ease;
+            padding: 0;
+            background: transparent;
         }
 
         .social-icons img:hover {
@@ -297,8 +338,8 @@
 
         .btn-whatsapp {
             display: inline-block;
-            background-color: #000000;
-            color: white;
+            background: linear-gradient(45deg, #f8d210, #f4a261);
+            color: #132e39;
             padding: 12px 25px;
             font-size: 18px;
             font-weight: bold;
@@ -306,16 +347,25 @@
             text-decoration: none;
             transition: 0.3s;
             margin-top: 20px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(248, 210, 16, 0.3);
         }
 
         .btn-whatsapp:hover {
-            background-color: #0a2816;
-            transform: translateY(-3px);
+            background: linear-gradient(45deg, #f4a261, #f8d210);
+            transform: translateY(-3px) scale(1.02);
         }
 
         .copyright {
             margin-top: 20px;
             color: rgba(255,255,255,0.8);
+        }
+
+        /* Animasyon eklemeleri */
+        @keyframes floatAnimation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
         }
 
         /* Responsive Tasarım */
@@ -341,9 +391,157 @@
                 height: 200px;
             }
         }
+
+        .achievements-preview {
+            background: rgba(19, 46, 57, 0.95);
+            padding: 40px 20px;
+            margin: 40px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .achievements-slider {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+
+        .achievement-card {
+            min-width: 250px;
+            background: linear-gradient(145deg, #132e39, #203a43);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .achievement-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .achievement-card h3 {
+            color: #f8d210;
+            margin: 10px 0;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(to right, #f8d210, #f4a261);
+            z-index: 1001;
+            transition: width 0.2s ease;
+        }
+
+        /* Particles Canvas */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Skills Container - Yetenek çubukları için */
+        .skills-container {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(19, 46, 57, 0.9);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .skill-item {
+            padding: 10px;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(45deg, #f8d210, #f4a261);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(19, 46, 57, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #f8d210;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>Yükleniyor...</p>
+        </div>
+    </div>
+
+    <!-- Particles Canvas -->
+    <canvas id="particles"></canvas>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
     <!-- Hero Bölümü -->
     <section class="hero" id="hero">
         <div class="hero-text">
@@ -406,6 +604,28 @@
                     Çağatay, boş zamanlarında <strong>kitap okumak, yazılım öğrenmek, dil becerilerini geliştirmek, oyun oynamak, film ve dizi izlemek</strong> gibi birçok aktiviteyle ilgilenmektedir. 
                     <strong>Müziğe büyük bir ilgisi vardır</strong>, sadece dinlemekle kalmayıp <strong>müzik söylemek</strong> konusunda da kendini geliştirmektedir. 🎵
                 </p>
+            </div>
+
+            <!-- Öne Çıkan Başarılar -->
+            <div class="achievements-preview">
+                <h2 class="player">Öne Çıkan Başarılar</h2>
+                <div class="achievements-slider">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🏆</div>
+                        <h3>Okul Birinciliği</h3>
+                        <p>Bolaman Anadolu Lisesi</p>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🚀</div>
+                        <h3>TÜBİTAK Projesi</h3>
+                        <p>Proje Koordinatörü</p>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">💼</div>
+                        <h3>Staj Deneyimi</h3>
+                        <p>ENM Dijital</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Beceriler Bölümü -->
@@ -472,6 +692,40 @@
                         </div>
                         <div class="skill-back">
                             <p>B2-C1 Seviyesinde İngilizce</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teknik Yetenekler -->
+            <div class="skills-container">
+                <h2 class="section-title">Teknik Yetenekler</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML/CSS</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>JavaScript</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>C++</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
                         </div>
                     </div>
                 </div>
@@ -545,6 +799,104 @@
             document.querySelector('.nav-container').style.display = 'none';
             document.getElementById('mainContent').style.display = 'none';
         };
+
+        // Scroll progress bar için
+        window.addEventListener('scroll', () => {
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.pageYOffset / totalHeight) * 100;
+            document.querySelector('.scroll-progress').style.width = `${progress}%`;
+        });
+
+        // Particles animasyonu için
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        for(let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 3 + 1,
+                speedX: Math.random() * 2 - 1,
+                speedY: Math.random() * 2 - 1
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                
+                if(particle.x > canvas.width) particle.x = 0;
+                if(particle.x < 0) particle.x = canvas.width;
+                if(particle.y > canvas.height) particle.y = 0;
+                if(particle.y < 0) particle.y = canvas.height;
+                
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(248, 210, 16, 0.3)';
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Yetenek çubukları animasyonu
+        function animateSkillBars() {
+            const progressBars = document.querySelectorAll('.progress');
+            progressBars.forEach(bar => {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = targetWidth;
+                }, 200);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', animateSkillBars);
+        window.addEventListener('scroll', () => {
+            const skillsContainer = document.querySelector('.skills-container');
+            if (skillsContainer.getBoundingClientRect().top < window.innerHeight) {
+                animateSkillBars();
+            }
+        });
+
+        // skill-card class'ına sahip elementlere ekle
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mousemove', handleTilt);
+            card.addEventListener('mouseleave', resetTilt);
+        });
+
+        function handleTilt(e) {
+            const card = this;
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = -(x - centerX) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        }
+
+        function resetTilt() {
+            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 1500);
+        });
     </script>
 </body>
 </html>
