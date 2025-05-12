@@ -635,9 +635,24 @@
                 margin: 0;
             }
         }
+        .cursor {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at center, rgba(248, 210, 16, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
     </style>
 </head>
 <body>
+    <!-- Body başlangıcına ekle -->
+<div class="mouse-cursor-gradient-tracking">
+    <div class="cursor"></div>
+</div>
     <!-- Canvas element for particles -->
     <canvas id="particles"></canvas>
 
@@ -1007,5 +1022,13 @@
 
     animate();
     </script>
+    <!-- Body sonuna JavaScript ekle -->
+<script>
+document.addEventListener('mousemove', (e) => {
+    const cursor = document.querySelector('.cursor');
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+</script>
 </body>
 </html>
