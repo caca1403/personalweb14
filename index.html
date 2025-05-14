@@ -222,16 +222,18 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
+            padding: 20px;
         }
 
+        /* Beceriler kartları için yeni stiller */
         .skill-card {
-            width: 180px;
-            height: 220px;
-            background: linear-gradient(to bottom, #132e39, #203a43);
+            width: 200px;
+            height: 240px;
+            background: linear-gradient(145deg, #1a2a6c, #2d3a7c);
             color: white;
             text-align: center;
-            font-size: 20px;
+            font-size: 18px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -239,16 +241,11 @@
             position: relative;
             perspective: 1000px;
             cursor: pointer;
-            border-radius: 10px;
-            transition: transform 0.4s, box-shadow 0.3s;
+            border-radius: 15px;
+            transition: all 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .skill-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-            animation: floatAnimation 2s infinite ease-in-out;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            margin: 10px;
         }
 
         .skill-front, .skill-back {
@@ -260,19 +257,40 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            transition: transform 0.6s;
-            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.6s ease;
+            border-radius: 15px;
         }
 
         .skill-front {
-            background: linear-gradient(145deg, #132e39, #203a43);
+            background: linear-gradient(145deg, #272f2b, #a3ade0);
+        }
+
+        .skill-front h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #f8d210;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .skill-back {
             background: #f8d210;
-            color: black;
             transform: rotateY(180deg);
+        }
+
+        .skill-back p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #2d2e31;
+            font-weight: 500;
+            margin: 0;
+            padding: 15px;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
         .skill-card:hover .skill-front {
@@ -389,6 +407,15 @@
             .skill-card {
                 width: 160px;
                 height: 200px;
+            }
+
+            .skill-front h3 {
+                font-size: 20px;
+            }
+
+            .skill-back p {
+                font-size: 14px;
+                padding: 10px;
             }
         }
 
@@ -711,6 +738,70 @@
                             <p>B2-C1 Seviyesinde İngilizce</p>
                         </div>
                     </div>
+
+                    <div class="skill-card">
+                        <div class="skill-front">
+                            <h3>Word Edit
+                                PowerPoint</h3>
+                        </div>
+                        <div class="skill-back">
+                            <p>Microsoft Office Araçları</p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-front">
+                            <h3>Excel</h3>
+                        </div>
+                        <div class="skill-back">
+                            <p>Veri Analizi & Raporlama</p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-front">
+                            <h3>Power BI</h3>
+                        </div>
+                        <div class="skill-back">
+                            <p>Veri Görselleştirme & Dashboard</p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-front">
+                            <h3>Power Query/Pivot</h3>
+                        </div>
+                        <div class="skill-back">
+                            <p>Veri Dönüşümü & Analizi</p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-front">
+                            <h3>Canva</h3>
+                        </div>
+                        <div class="skill-back">
+                            <p>Grafik Tasarım & Görsel İçerik</p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-front">
+                            <h3>Figma</h3>
+                        </div>
+                        <div class="skill-back">
+                            <p>UI/UX Tasarım</p>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-front">
+                            <h3>Code::Blocks</h3>
+                        </div>
+                        <div class="skill-back">
+                            <p>C++ Geliştirme Ortamı</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -745,6 +836,25 @@
                             <div class="progress" style="width: 75%"></div>
                         </div>
                     </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Microsoft Office</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Power BI & Excel</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 
