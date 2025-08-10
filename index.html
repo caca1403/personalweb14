@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags for better search engine visibility -->
+    <meta name="description" content="Çağatay Çayır’ın kişisel web sitesi. Veri bilimi ve analitiği öğrencisi olarak projeler, beceriler, deneyimler ve iletişim bilgilerini burada bulabilirsiniz.">
+    <meta name="keywords" content="Çağatay Çayır, veri bilimi, analitik, yazılım geliştirme, projeler, beceriler, teknik yetenekler, eğitim, deneyim">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,6 +18,7 @@
             color: white;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
         /* Hero bölümü güncellemeleri */
@@ -301,6 +305,13 @@
             transform: rotateY(360deg);
         }
 
+        /* Skill icons */
+        .skill-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #f8d210;
+        }
+
         /* Buton güncellemeleri */
         .btn-custom {
             background: linear-gradient(45deg, #f8d210, #f4a261);
@@ -379,86 +390,6 @@
             color: rgba(255,255,255,0.8);
         }
 
-        /* Animasyon eklemeleri */
-        @keyframes floatAnimation {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-
-        /* Responsive Tasarım */
-        @media (max-width: 768px) {
-            .hero-text h1 {
-                font-size: 2.5em;
-            }
-
-            .hero-text p {
-                font-size: 1.2em;
-            }
-
-            .bio {
-                padding: 20px;
-            }
-
-            .skill-container {
-                gap: 15px;
-            }
-
-            .skill-card {
-                width: 160px;
-                height: 200px;
-            }
-
-            .skill-front h3 {
-                font-size: 20px;
-            }
-
-            .skill-back p {
-                font-size: 14px;
-                padding: 10px;
-            }
-        }
-
-        .achievements-preview {
-            background: rgba(19, 46, 57, 0.95);
-            padding: 40px 20px;
-            margin: 40px 0;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .achievements-slider {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 20px 0;
-            scroll-behavior: smooth;
-        }
-
-        .achievement-card {
-            min-width: 250px;
-            background: linear-gradient(145deg, #132e39, #203a43);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .achievement-icon {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .achievement-card h3 {
-            color: #f8d210;
-            margin: 10px 0;
-        }
-
         /* Scroll Progress Bar */
         .scroll-progress {
             position: fixed;
@@ -524,46 +455,309 @@
             transition: width 1s ease;
         }
 
-        #loader {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(19, 46, 57, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .loader-content {
-            text-align: center;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #f8d210;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-        .cursor {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle at center, rgba(248, 210, 16, 0.2) 0%, transparent 70%);
+        /* Responsive Tasarım */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-text p {
+                font-size: 1.2em;
+            }
+
+            .bio {
+                padding: 20px;
+            }
+
+            .skill-container {
+                gap: 15px;
+            }
+
+            .skill-card {
+                width: 160px;
+                height: 200px;
+            }
+
+            .skill-front h3 {
+                font-size: 20px;
+            }
+
+            .skill-back p {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        /* Deneyim ve Eğitim bölümü stilleri */
+        .timeline-section {
+            padding: 50px 20px;
+            background: rgba(19, 46, 57, 0.95);
+            margin-top: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #f8d210;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: 20px;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(145deg, #f8d210, #f4a261);
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #132e39;
+            font-size: 18px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -15px;
+            right: auto;
+        }
+
+        .timeline-content {
+            background: linear-gradient(145deg, #132e39, #203a43);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .timeline-date {
+            font-size: 14px;
+            color: #f8d210;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .timeline:before {
+                left: 0;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+            }
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+                text-align: left;
+            }
+            .timeline-icon {
+                left: 15px !important;
+                right: auto;
+            }
+        }
+
+        /* Back to Top button */
+        .back-to-top {
             position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1002;
+            background: linear-gradient(45deg, #f8d210, #f4a261);
+            color: #132e39;
+            padding: 12px 16px;
+            border-radius: 50%;
+            display: none;
+            box-shadow: 0 4px 15px rgba(248, 210, 16, 0.3);
+            cursor: pointer;
+            border: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Başarı istatistikleri stilleri */
+        .stats-section {
+            padding: 50px 20px;
+            background: rgba(19, 46, 57, 0.95);
+            margin-top: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #f8d210;
+        }
+        .stat-label {
+            margin-top: 10px;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Öne çıkan başarılar için yeniden tasarım */
+        .achievements-preview {
+            background: rgba(19, 46, 57, 0.95);
+            padding: 40px 20px;
+            margin: 40px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .achievements-slider {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+        .achievement-card {
+            min-width: 280px;
+            background: linear-gradient(145deg, #132e39, #203a43);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .achievement-card:hover {
+            transform: translateY(-8px);
+        }
+        .achievement-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .achievement-card h3 {
+            color: #f8d210;
+            margin: 10px 0;
+        }
+
+        /* Projeler bölümü stilleri */
+        .projects-section {
+            padding: 50px 20px;
+            background: rgba(19, 46, 57, 0.95);
+            margin-top: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: linear-gradient(145deg, #132e39, #203a43);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .project-card h3 {
+            color: #f8d210;
+            margin-bottom: 10px;
+        }
+        .project-card p {
+            color: white;
+            margin-bottom: 15px;
+        }
+        .project-card a {
+            background: linear-gradient(45deg, #f8d210, #f4a261);
+            color: #132e39;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .project-card a:hover {
+            background: linear-gradient(45deg, #f4a261, #f8d210);
+        }
+
+        /* İletişim bölümü stilleri */
+        .contact-section {
+            padding: 50px 20px;
+            background: rgba(19, 46, 57, 0.95);
+            margin-top: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        .contact-section form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact-section input, .contact-section textarea {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: none;
+            background: #132e39;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .contact-section input:focus, .contact-section textarea:focus {
+            outline: none;
+            border-color: #f8d210;
+        }
+        .contact-section button {
+            align-self: flex-start;
         }
     </style>
 </head>
@@ -655,22 +849,41 @@
                 <h2 class="player">Öne Çıkan Başarılar</h2>
                 <div class="achievements-slider">
                     <div class="achievement-card">
-                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-icon" aria-label="Okul Birinciliği">🏆</div>
                         <h3>Okul Birinciliği</h3>
                         <p>Bolaman Anadolu Lisesi</p>
                     </div>
                     <div class="achievement-card">
-                        <div class="achievement-icon">🚀</div>
+                        <div class="achievement-icon" aria-label="TÜBİTAK Projesi">🚀</div>
                         <h3>TÜBİTAK Projesi</h3>
                         <p>Proje Koordinatörü</p>
                     </div>
                     <div class="achievement-card">
-                        <div class="achievement-icon">💼</div>
+                        <div class="achievement-icon" aria-label="Staj Deneyimi">💼</div>
                         <h3>Staj Deneyimi</h3>
                         <p>ENM Dijital</p>
                     </div>
                 </div>
             </div>
+
+            <!-- Başarı İstatistikleri -->
+            <section class="stats-section">
+                <h2 class="player">Başarı İstatistikleri</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="1">0</div>
+                        <div class="stat-label">Okul Birinciliği</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="1">0</div>
+                        <div class="stat-label">TÜBİTAK Projesi</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="1">0</div>
+                        <div class="stat-label">Staj Deneyimi</div>
+                    </div>
+                </div>
+            </section>
 
             <!-- Beceriler Bölümü -->
             <div class="skills-section">
@@ -678,6 +891,7 @@
                 <div class="skill-container">
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fab fa-python"></i>
                             <h3>Python</h3>
                         </div>
                         <div class="skill-back">
@@ -687,6 +901,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fas fa-code"></i>
                             <h3>C++</h3>
                         </div>
                         <div class="skill-back">
@@ -696,6 +911,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fab fa-html5"></i>
                             <h3>HTML</h3>
                         </div>
                         <div class="skill-back">
@@ -705,6 +921,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fab fa-css3-alt"></i>
                             <h3>CSS</h3>
                         </div>
                         <div class="skill-back">
@@ -714,6 +931,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fab fa-js-square"></i>
                             <h3>JavaScript</h3>
                         </div>
                         <div class="skill-back">
@@ -723,6 +941,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fab fa-bootstrap"></i>
                             <h3>Bootstrap</h3>
                         </div>
                         <div class="skill-back">
@@ -732,6 +951,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fas fa-language"></i>
                             <h3>Yabancı Dil</h3>
                         </div>
                         <div class="skill-back">
@@ -741,6 +961,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fas fa-file-powerpoint"></i>
                             <h3>Word Edit
                                 PowerPoint</h3>
                         </div>
@@ -751,6 +972,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fas fa-file-excel"></i>
                             <h3>Excel</h3>
                         </div>
                         <div class="skill-back">
@@ -760,6 +982,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fas fa-chart-bar"></i>
                             <h3>Power BI</h3>
                         </div>
                         <div class="skill-back">
@@ -769,6 +992,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fas fa-table"></i>
                             <h3>Power Query/Pivot</h3>
                         </div>
                         <div class="skill-back">
@@ -778,6 +1002,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fas fa-paint-brush"></i>
                             <h3>Canva</h3>
                         </div>
                         <div class="skill-back">
@@ -787,6 +1012,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fab fa-figma"></i>
                             <h3>Figma</h3>
                         </div>
                         <div class="skill-back">
@@ -796,6 +1022,7 @@
 
                     <div class="skill-card">
                         <div class="skill-front">
+                            <i class="skill-icon fas fa-code-branch"></i>
                             <h3>Code::Blocks</h3>
                         </div>
                         <div class="skill-back">
@@ -854,16 +1081,30 @@
                             <div class="progress" style="width: 75%"></div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
+
+            <!-- Deneyim ve Eğitim bölümü kaldırıldı -->
+
+            <!-- Projelerim bölümü geçici olarak kaldırıldı -->
+
+            <!-- İletişim Bölümü -->
+            <section class="contact-section">
+                <h2 class="player">İletişim</h2>
+                <form onsubmit="sendEmail(event)">
+                    <input type="text" id="contactName" placeholder="Adınız" required>
+                    <input type="email" id="contactEmail" placeholder="E-posta Adresiniz" required>
+                    <textarea id="contactMessage" rows="5" placeholder="Mesajınız" required></textarea>
+                    <button class="btn-custom" type="submit">Mesaj Gönder</button>
+                </form>
+            </section>
 
             <!-- Aile Danışmanlığı Butonu -->
             <div class="button-containerr" style="margin-top: 60px;">
                 <button class="btn-custom" onclick="showWebsite()">Aile Danışmanlığı Web Sitesine Git</button>
                 <div id="iframeContainer" style="display:none; margin-top: 20px; text-align: center;">
                     <iframe id="websiteFrame" src="" width="100%" height="600px" style="border:none;"></iframe>
-                    <button class="btn-custom" onclick="scrollToTop()" style="margin-top: 20px;">Ana Menüye Dön</button>
+                    <button class="btn-custom" onclick="returnToMenu()" style="margin-top: 20px;">Ana Menüye Dön</button>
                 </div>
             </div>
         </div>
@@ -872,18 +1113,17 @@
         <footer class="footer-s">
             <div class="social-icons">
                 <a href="https://www.instagram.com/cayirrcagatayy?igsh=ejcwMmhhZzd2aGpp" target="_blank">
-                    <img src="instagram.png" alt="Instagram">
+                    <img src="instagram.png" alt="Instagram Profilim">
                 </a>
                 <a href="https://www.facebook.com/share/15u1TSAJEf/?mibextid=qi2Omg" target="_blank">
-                    <img src="facebook.png" alt="Facebook">
+                    <img src="facebook.png" alt="Facebook Profilim">
                 </a>
                 <a href="https://www.linkedin.com/in/%C3%A7agatay-%C3%A7ay%C4%B1r-80a46729a/" target="_blank">
-                    <img src="linkedin.jpeg" alt="LinkedIn">
+                    <img src="linkedin.jpeg" alt="LinkedIn Profilim">
                 </a>
             </div>
             <div class="buttons">
-                <a href="https://api.whatsapp.com/send?phone=905426101403&text=Merhaba%20Çağatay,%20sizinle%20iletişime%20geçmek%20istiyorum!"
-                   class="btn-whatsapp" target="_blank">
+                <a href="https://api.whatsapp.com/send?phone=905426101403&text=Merhaba%20Çağatay,%20sizinle%20iletişime%20geçmek%20istiyorum!" class="btn-whatsapp" target="_blank">
                     İletişime Geç
                 </a>
             </div>
@@ -891,31 +1131,27 @@
         </footer>
     </div>
 
+    <!-- Back to Top button -->
+    <button id="backToTopBtn" class="back-to-top" onclick="backToTop()">↑</button>
+
     <script>
         function showContent() {
             document.getElementById('hero').classList.add('hidden');
             document.getElementById('mainContent').style.display = 'block';
             document.querySelector('.nav-container').style.display = 'flex';
             document.body.style.overflow = 'auto';
-            
-            // Smooth scroll to top
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showWebsite() {
             var iframeContainer = document.getElementById('iframeContainer');
             var iframe = document.getElementById('websiteFrame');
-            
             iframe.src = "https://caca1403.github.io/ailedan-man-emine/";
             iframeContainer.style.display = "block";
-            
             iframeContainer.scrollIntoView({ behavior: "smooth" });
         }
 
-        function scrollToTop() {
+        function returnToMenu() {
             document.getElementById('iframeContainer').style.display = "none";
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
@@ -932,6 +1168,14 @@
             const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
             const progress = (window.pageYOffset / totalHeight) * 100;
             document.querySelector('.scroll-progress').style.width = `${progress}%`;
+
+            // Back to top button visibility
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
         });
 
         // Particles animasyonu için
@@ -953,25 +1197,20 @@
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
             particles.forEach(particle => {
                 particle.x += particle.speedX;
                 particle.y += particle.speedY;
-                
                 if(particle.x > canvas.width) particle.x = 0;
                 if(particle.x < 0) particle.x = canvas.width;
                 if(particle.y > canvas.height) particle.y = 0;
                 if(particle.y < 0) particle.y = canvas.height;
-                
                 ctx.beginPath();
                 ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
                 ctx.fillStyle = 'rgba(248, 210, 16, 0.3)';
                 ctx.fill();
             });
-            
             requestAnimationFrame(animate);
         }
-
         animate();
 
         // Yetenek çubukları animasyonu
@@ -994,7 +1233,7 @@
             }
         });
 
-        // skill-card class'ına sahip elementlere ekle
+        // skill-card tilt effect
         document.querySelectorAll('.skill-card').forEach(card => {
             card.addEventListener('mousemove', handleTilt);
             card.addEventListener('mouseleave', resetTilt);
@@ -1005,18 +1244,17 @@
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
             const rotateX = (y - centerY) / 10;
             const rotateY = -(x - centerX) / 10;
-            
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            card.style.boxShadow = `${rotateY/2}px ${rotateX/2}px 20px rgba(0,0,0,0.3)`;
         }
 
         function resetTilt() {
             this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            this.style.boxShadow = '';
         }
 
         window.addEventListener('load', () => {
@@ -1025,39 +1263,58 @@
             }, 1500);
         });
 
-        const skillCards = document.querySelectorAll('.skill-card');
-
-        skillCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = -(x - centerX) / 10;
-                
-                card.style.transform = `perspective(1000px) 
-                                      rotateX(${rotateX}deg) 
-                                      rotateY(${rotateY}deg) 
-                                      scale3d(1.05, 1.05, 1.05)`;
-                
-                card.style.boxShadow = `${rotateY/2}px ${rotateX/2}px 20px rgba(0,0,0,0.3)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-                card.style.boxShadow = '';
-            });
-        });
-
         document.addEventListener('mousemove', (e) => {
             const cursor = document.querySelector('.cursor');
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
+
+        // Back to top function
+        function backToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Başarı istatistikleri sayaçlarını çalıştırır
+        let countersAnimated = false;
+        function animateCounters() {
+            if (countersAnimated) return;
+            countersAnimated = true;
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'), 10);
+                let count = 0;
+                const increment = Math.ceil(target / 30);
+                const update = () => {
+                    count += increment;
+                    if (count >= target) {
+                        counter.innerText = target;
+                    } else {
+                        counter.innerText = count;
+                        requestAnimationFrame(update);
+                    }
+                };
+                update();
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection && statsSection.getBoundingClientRect().top < window.innerHeight) {
+                animateCounters();
+            }
+        });
+
+        // E-posta gönderim fonksiyonu
+        function sendEmail(event) {
+            event.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+            const subject = encodeURIComponent('İletişim Formu Mesajı');
+            const body = encodeURIComponent(`Ad: ${name}\nE-posta: ${email}\nMesaj: ${message}`);
+            // Kullanıcının varsayılan e-posta istemcisini açar
+            window.location.href = `mailto:cagatayca07@gmail.com?subject=${subject}&body=${body}`;
+        }
     </script>
 </body>
 </html>
